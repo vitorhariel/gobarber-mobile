@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
-import { DatePickerAndroid } from 'react-native';
-import { format } from 'date-fns';
+import { DatePickerAndroid, Alert } from 'react-native';
+import { format, isBefore } from 'date-fns';
 import en from 'date-fns/locale/en-US';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
@@ -21,7 +21,14 @@ export default function DateInput({ date, onChange }) {
     if (action === DatePickerAndroid.dateSetAction) {
       const selectedDate = new Date(year, month, day);
 
-      onChange(selectedDate);
+      if (!isBefore(selectedDate, new Date().setHours(0, 0, 0, 0))) {
+        onChange(selectedDate);
+      } else {
+        Alert.alert(
+          'Date not permited!',
+          'You can not select a date in the past.'
+        );
+      }
     }
   }
 
