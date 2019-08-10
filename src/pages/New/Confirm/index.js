@@ -28,17 +28,6 @@ export default function Confirm({ navigation }) {
         date: time,
       });
 
-      navigation.dispatch(
-        StackActions.reset({
-          index: 0,
-          actions: [
-            NavigationActions.navigate({
-              routeName: 'SelectProvider',
-            }),
-          ],
-        })
-      );
-
       navigation.navigate('Dashboard');
     } catch (err) {
       if (err.response) {
