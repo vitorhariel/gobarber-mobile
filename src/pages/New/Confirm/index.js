@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { formatRelative, parseISO } from 'date-fns';
 import en from 'date-fns/locale/en-US';
 import { TouchableOpacity, Alert } from 'react-native';
-import { StackActions, NavigationActions } from 'react-navigation';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import api from '~/services/api';
